@@ -36,9 +36,9 @@ sim = mp.Simulation(cell_size=cell_size,
                     k_point=k_point)
 
 
-fcen = 2.5
-df= 0.1
-nfreq = 100             
+fcen = 2.5 #frequency of the source
+df= 0.1 #uncertainty of the frequency
+nfreq = 100 #number of calculation           
 
           
 refl_fr = mp.FluxRegion(center=mp.Vector3(0,0,0), size=mp.Vector3(0,10,0))      
@@ -157,7 +157,7 @@ plt.imshow(np.flipud(np.transpose(np.real(ez_data))), interpolation='spline36', 
 plt.axis('off')
 plt.show()
 
-
+#We will divide the flux with the dielectric by the background flux. The range can go to nfreq, but we can choose an other value like 1.
 
 wl = []
 Rs = []
@@ -176,4 +176,4 @@ if mp.am_master():
     plt.xlabel("wavelength (μm)")
     plt.legend(loc="upper right")
     plt.show()
-    print(Ts)
+    print(Ts) #it will print the value of the transmission coefficient and show a graph of the transmission and reflection coefficient.
